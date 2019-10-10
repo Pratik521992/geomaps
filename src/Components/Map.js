@@ -40,7 +40,7 @@ function Maps(props) {
     return <Marker name={'Custom Marker'} position={{ lat, lng }} />;
   };
 
-  const onMapClicked = (coord) => {
+  const onMapClicked = (t, map, coord) => {
     const { latLng } = coord;
     props.setNewLocation(latLng);
   };
@@ -77,5 +77,5 @@ function Maps(props) {
 }
 
 export default GoogleApiWrapper({
-  apiKey: ""
+  apiKey: "AIzaSyAlYTFyfdxXkyHR__I91k8QdqRMED_4D-Q"
 })(Maps);
