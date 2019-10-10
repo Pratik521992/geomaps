@@ -5,7 +5,6 @@ import { Directions } from "@material-ui/icons";
 import Typography from "@material-ui/core/Typography";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 
-const { useState } = React;
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -32,19 +31,18 @@ function Maps(props) {
   const classes = useStyles();
   const { locationData = { lat: 51.3397, lng: 12.3731 } } = props;
   const { lat, lng } = locationData;
-  const [newLocation, setNewLocation] = useState('');
 
   const renderCustomMarkers = () =>  {
-      if(!newLocation) return '';
+      if(!props.newLocation) return '';
 
-    const lat = newLocation.lat();
-    const lng = newLocation.lng();
-    return <Marker position={{ lat, lng }} />;
+    const lat = props.newLocation.lat();
+    const lng = props.newLocation.lng();
+    return <Marker name={'Custom Marker'} position={{ lat, lng }} />;
   };
 
   const onMapClicked = (t, map, coord) => {
     const { latLng } = coord;
-    setNewLocation(latLng);
+    props.setNewLocation(latLng);
   };
 
   if (!lat || !lng) {
@@ -65,7 +63,7 @@ function Maps(props) {
     <Paper elevation={0} className={classes.root}>
       <Map
         google={props.google}
-        zoom={12}
+        zoom={8}
         style={mapstyle}
         initialCenter={{ lat, lng }}
         center={{ lat, lng }}
@@ -79,5 +77,5 @@ function Maps(props) {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyAlYTFyfdxXkyHR__I91k8QdqRMED_4D-Q"
+  apiKey: ""
 })(Maps);
