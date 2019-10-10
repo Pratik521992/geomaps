@@ -40,7 +40,7 @@ function Maps(props) {
     return <Marker name={'Custom Marker'} position={{ lat, lng }} />;
   };
 
-  const onMapClicked = (t, map, coord) => {
+  const onMapClicked = (coord) => {
     const { latLng } = coord;
     props.setNewLocation(latLng);
   };
