@@ -77,5 +77,5 @@ function Maps(props) {
 }
 
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyAlYTFyfdxXkyHR__I91k8QdqRMED_4D-Q"
+  apiKey: "",
 })(Maps);
